@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class SalesManager {
     static void main(String[] args) {
-
+// === 지역변수 선언부 ======================================================= //
         int Qty; // 판매량
         int[] salesQty = new int[2]; // 실제 판매량
         int targetQty; // 목표 판매량
@@ -36,14 +36,14 @@ public class SalesManager {
         int totalmProfit_C2 = 0; // 매출총액
         int totalProfit_C2 = 0; // 매출원가
         int totalrealProfit_C2 =0; // 순이익
-
+// ======================================================================== //
         Scanner scan = new Scanner(System.in);
 
         // 입력한 데이터를 토대로 판매지역의 판매량에 대한 매출 계획과 매출원가에 대한 이익률, 그리고 달성률을 비교하는 것을 정의하는 Main Class이다.
         // 이익률만 보자.
 
-        Product vehicleItem = new Product("코란도 패밀리", "지역", 1200, 880, 0);
-        Product vehicleItem2 = new Product("무쏘", "지역", 1500, 1200, 0);
+        Product vehicleItem = new Product("샤미드", "지역", 1200, 880, 0);
+        Product vehicleItem2 = new Product("부스터", "지역", 1500, 1200, 0);
 
         int korandoRetailSales = vehicleItem.getRetailPrice();
         int korandoSales = vehicleItem.getPrice();
@@ -53,10 +53,10 @@ public class SalesManager {
         System.out.println();
 
         Item[] item = {
-                new Product("코란도 패밀리", "스페인", 1200, 880, 78),
-                new Product("코란도 패밀리", "포르투갈", 1200, 880, 52),
-                new Product("코란도 패밀리", "프랑스", 1200, 880, 100),
-                new Product("코란도 패밀리", "독일", 1200, 880, 35),
+                new Product("샤미드", "스페인", 1200, 880, 78),
+                new Product("샤미드", "포르투갈", 1200, 880, 52),
+                new Product("샤미드", "프랑스", 1200, 880, 100),
+                new Product("샤미드", "독일", 1200, 880, 35),
         };
 
         for (int i = 0; i < item.length; i++) {
@@ -64,10 +64,10 @@ public class SalesManager {
         }
 
         Item[] item2 = {
-                new Product("무쏘", "스페인", 1500, 1200, 48),
-                new Product("무쏘", "포르투갈", 1500, 1200, 88),
-                new Product("무쏘", "프랑스", 1500, 1200, 28),
-                new Product("무쏘", "독일", 1500, 1200, 123),
+                new Product("부스터", "스페인", 1500, 1200, 48),
+                new Product("부스터", "포르투갈", 1500, 1200, 88),
+                new Product("부스터", "프랑스", 1500, 1200, 28),
+                new Product("부스터", "독일", 1500, 1200, 123),
         };
 
         for (int i = 0; i < item2.length; i++) {

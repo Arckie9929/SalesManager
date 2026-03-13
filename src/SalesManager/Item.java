@@ -1,7 +1,7 @@
 package SalesManager;
 
 public abstract class Item implements Reportable {
-    public static final String CompanyName = "고자자동차";
+    public static final String CompanyName = "이브이자동차";
     private String productName; // 제품명
     private String area; // 지역
     private int retailPrice; // 판매가
