@@ -1,0 +1,128 @@
+SalesAmount = quantity * UnitPrice // 품목별 총 매출
+
+SalesCost =  quantity * UnitCost // 매출원가
+
+SalesProfit = SalesAmount - SalesCost // 순이익
+
+// 예시 =============================
+month	item	area	quantity
+1	A	Local	10
+2	A	Local	15
+3	A	Local	20
+1	B	OverSea	5
+2	B	OverSea	6
+3	B	OverSea	7
+
+item	UnitPrice	  UnitCost
+A	100	  80
+B	120	  95
+/// ==================================
+Package, class, extends, interface, abstract, implements, overriding, constructor, getter, variable, polymorphism, this, instanceof printf, println, new, super, public, private, static, void, for, while, static, array, Scanner
+// 사용해야할 기술
+
+package com.inventory.management; // package
+
+import java.util.Scanner; // Scanner
+
+// 1. interface 및 abstract class 정의
+
+interface Reportable { // 요약 출력
+    void printSummary();
+}
+
+abstract class Item implements Reportable { // implements, abstract
+    private String name; // private variable
+    private String area;
+    private int unitPrice;
+    private int unitCost;
+
+    // constructor (생성자)
+    public Item(String name, String area, int unitPrice, int unitCost) {
+        this.name = name; // this
+        this.area = area;
+        this.unitPrice = unitPrice;
+        this.unitCost = unitCost;
+    }
+
+    // getter (접근자)
+    public String getName() { return name; }
+    public int getUnitPrice() { return unitPrice; }
+    public int getUnitCost() { return unitCost; }
+    public String getArea() { return area; }
+
+    // 다형성을 위한 추상 메서드
+    public abstract void displayItemType();
+}
+
+// 2. extends (상속) 구현
+class Product extends Item {
+    public Product(String name, String area, int price, int cost) {
+        super(name, area, price, cost); // super
+    }
+
+    @Override // overriding
+    public void displayItemType() {
+        System.out.printf("[%s 생산 상품] ", getArea()); // printf
+    }
+
+    @Override
+    public void printSummary() {
+        System.out.println("상품명: " + getName()); // println
+    }
+}
+
+// 3. 실행 클래스
+public class SalesManager {
+    // static variable
+    public static final String TITLE = "월별 매출 분석 보고서";
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in); // new, Scanner
+
+        // PDF 데이터: Item 정보 배열(array) 생성
+        Item[] items = new Item[2];
+        items[0] = new Product("itemA", "Local", 100, 80);
+        items[1] = new Product("itemB", "OverSea", 120, 95);
+
+        // PDF 데이터: 월별 판매량 (1~3월)
+        int[][] monthlyQty = {
+            {10, 5},  // 1월 (itemA, itemB)
+            {15, 6},  // 2월
+            {20, 7}   // 3월
+        };
+
+        System.out.println(TITLE);
+
+        // for 및 while 루프 활용
+        int m = 0;
+        while (m < monthlyQty.length) { // while
+            System.out.println("--------------------------------------");
+            System.out.println((m + 1) + "월 판매 내역:");
+
+            for (int i = 0; i < items.length; i++) { // for
+                Item item = items[i];
+                int qty = monthlyQty[m][i];
+
+                // 요청하신 계산식 적용
+                int salesAmount = qty * item.getUnitPrice(); // SalesAmount = quantity * UnitPrice
+                int salesCost = qty * item.getUnitCost();     // SalesCost = quantity * UnitCost
+                int salesProfit = salesAmount - salesCost;   // SalesProfit = SalesAmount - SalesCost
+
+                // instanceof 및 polymorphism(다형성) 활용
+                if (item instanceof Product) {
+                    item.displayItemType();
+                }
+
+                System.out.printf("%-6s | 매출액: %d | 원가: %d | 이익: %d\n",
+                                  item.getName(), salesAmount, salesCost, salesProfit);
+            }
+            m++;
+        }
+
+        System.out.print("\n분석을 종료하려면 'exit'를 입력하세요: ");
+        String input = sc.next();
+        if(input.equals("exit")) System.out.println("프로그램 종료.");
+
+        sc.close();
+    }
+
