@@ -4,10 +4,10 @@ public abstract class Item implements Reportable {
     public static final String CompanyName = "고자자동차";
     private String productName; // 제품명
     private String area; // 지역
-    private double retailPrice; // 판매가
-    private double price; // 원가
+    private int retailPrice; // 판매가
+    private int price; // 원가
 
-    public Item(String productName, String area, double retailPrice, double price) {
+    public Item(String productName, String area, int retailPrice, int price) {
         this.productName = productName;
         this.area = area;
         this.retailPrice = retailPrice;
@@ -28,11 +28,11 @@ public abstract class Item implements Reportable {
         return area;
     }
 
-    public double getRetailPrice() {
+    public int getRetailPrice() {
         return retailPrice;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 }

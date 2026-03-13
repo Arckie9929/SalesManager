@@ -4,8 +4,9 @@ public class Product extends Item {
 
     private int unitSales;
 
-    public Product(String productName, String area, double retailPrice, double price) {
+    public Product(String productName, String area, int retailPrice, int price, int unitSales) {
         super(productName, area, retailPrice, price);
+        this.unitSales = unitSales;
     }
 
     @Override
