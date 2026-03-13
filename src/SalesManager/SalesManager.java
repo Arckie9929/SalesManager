@@ -5,10 +5,7 @@ import java.util.Scanner;
 public class SalesManager {
     static void main(String[] args) {
 // === 지역변수 선언부 ======================================================= //
-        int Qty; // 판매량
         int[] salesQty = new int[2]; // 실제 판매량
-        int targetQty; // 목표 판매량
-        double salesAmount; // 판매량
         int mProfit;
         int realProfit; // 순이익
         int profit; // 매출
@@ -19,7 +16,6 @@ public class SalesManager {
         int profit_C2 = 0;
         int realProfit_C2 = 0;
 
-        int salesQty_C3 = 0;
         int mProfit_C3 = 0;
         int profit_C3 = 0;
         int realProfit_C3 = 0;
